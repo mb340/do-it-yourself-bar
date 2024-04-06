@@ -231,7 +231,7 @@ case $VIEW in
         COMMAND_1="qdbus org.freedesktop.ScreenSaver /ScreenSaver Lock"
         COMMAND_2="'$SELF_PATH' $ID VOLUME_VIEW"
         COMMAND_3="'$SELF_PATH' $ID BRIGHTNESS_VIEW"
-        COMMAND_4="systemsettings5"
+        COMMAND_4="systemsettings"
 
         DATA+="| B |  | Lock the screen | $COMMAND_1 |"
         DATA+="| B |  | Change volume level | $COMMAND_2 |"
