@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0
+
+* Port to Plasma 6.0
+
 ## 1.2
 
 ### Changes
