@@ -2,6 +2,8 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 
+import org.kde.kirigami as Kirigami
+
 import "../common/Utils.js" as Utils
 
 Component {
@@ -62,15 +64,15 @@ Component {
 
             color: {
                 if (style == "A") {
-                    return config.BlockIndicatorsCustomColorForStyleA || theme.textColor;
+                    return config.BlockIndicatorsCustomColorForStyleA || Kirigami.Theme.textColor;
                 }
                 if (style == "B") {
-                    return config.BlockIndicatorsCustomColorForStyleB || theme.buttonFocusColor;
+                    return config.BlockIndicatorsCustomColorForStyleB || Kirigami.Theme.highlightColor;
                 }
                 if (style == "C") {
                     return config.BlockIndicatorsCustomColorForStyleC || "#e34a4a";
                 }
-                return theme.textColor;
+                return Kirigami.Theme.textColor;
             }
 
             Behavior on color {
@@ -166,15 +168,15 @@ Component {
                     return indicator.color;
                 }
                 if (parent.style == "A") {
-                    return config.BlockLabelsCustomColorForStyleA || theme.textColor;
+                    return config.BlockLabelsCustomColorForStyleA || Kirigami.Theme.textColor;
                 }
                 if (parent.style == "B") {
-                    return config.BlockLabelsCustomColorForStyleB || theme.textColor;
+                    return config.BlockLabelsCustomColorForStyleB || Kirigami.Theme.textColor;
                 }
                 if (parent.style == "C") {
-                    return config.BlockLabelsCustomColorForStyleC || theme.textColor;
+                    return config.BlockLabelsCustomColorForStyleC || Kirigami.Theme.textColor;
                 }
-                return theme.textColor;
+                return Kirigami.Theme.textColor;
             }
 
             Behavior on color {
@@ -191,8 +193,8 @@ Component {
                 }
             }
 
-            font.family: config.BlockLabelsCustomFont || theme.defaultFont.family
-            font.pixelSize: config.BlockLabelsCustomFontSize || theme.defaultFont.pixelSize
+            font.family: config.BlockLabelsCustomFont || Kirigami.Theme.defaultFont.family
+            font.pixelSize: config.BlockLabelsCustomFontSize || Kirigami.Theme.defaultFont.pixelSize
         }
 
         MouseArea {

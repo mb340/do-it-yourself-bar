@@ -3,6 +3,7 @@ import QtQuick.Controls
 import QtQuick.Dialogs
 import QtQuick.Layouts
 
+import org.kde.kirigami as Kirigami
 import org.kde.plasma.core 2.0 as PlasmaCore
 
 import "../common" as UICommon
@@ -227,7 +228,7 @@ Item {
             ColorButton {
                 id: blockLabelsCustomColorForStyleAButton
                 enabled: blockLabelsCustomColorForStyleACheckBox.checked
-                color: cfg_BlockLabelsCustomColorForStyleA || theme.textColor
+                color: cfg_BlockLabelsCustomColorForStyleA || Kirigami.Theme.textColor
 
                 colorAcceptedCallback: function(color) {
                     cfg_BlockLabelsCustomColorForStyleA = color;
@@ -262,7 +263,7 @@ Item {
             ColorButton {
                 id: blockLabelsCustomColorForStyleBButton
                 enabled: blockLabelsCustomColorForStyleBCheckBox.checked
-                color: cfg_BlockLabelsCustomColorForStyleB || theme.textColor
+                color: cfg_BlockLabelsCustomColorForStyleB || Kirigami.Theme.textColor
 
                 colorAcceptedCallback: function(color) {
                     cfg_BlockLabelsCustomColorForStyleB = color;
@@ -297,7 +298,7 @@ Item {
             ColorButton {
                 id: blockLabelsCustomColorForStyleCButton
                 enabled: blockLabelsCustomColorForStyleCCheckBox.checked
-                color: cfg_BlockLabelsCustomColorForStyleC || theme.textColor
+                color: cfg_BlockLabelsCustomColorForStyleC || Kirigami.Theme.textColor
 
                 colorAcceptedCallback: function(color) {
                     cfg_BlockLabelsCustomColorForStyleC = color;
@@ -390,7 +391,7 @@ Item {
             ColorButton {
                 id: indicatorsCustomColorForStyleAButton
                 enabled: indicatorsCustomColorForStyleACheckBox.checked
-                color: cfg_BlockIndicatorsCustomColorForStyleA || theme.textColor
+                color: cfg_BlockIndicatorsCustomColorForStyleA || Kirigami.Theme.textColor
 
                 colorAcceptedCallback: function(color) {
                     cfg_BlockIndicatorsCustomColorForStyleA = color;
@@ -410,7 +411,7 @@ Item {
             ColorButton {
                 id: indicatorsCustomColorForStyleBButton
                 enabled: indicatorsCustomColorForStyleBCheckBox.checked
-                color: cfg_BlockIndicatorsCustomColorForStyleB || theme.buttonFocusColor
+                color: cfg_BlockIndicatorsCustomColorForStyleB || Kirigami.Theme.highlightColor
 
                 colorAcceptedCallback: function(color) {
                     cfg_BlockIndicatorsCustomColorForStyleB = color;

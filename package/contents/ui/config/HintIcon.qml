@@ -2,11 +2,12 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 
+import org.kde.kirigami as Kirigami
 import org.kde.plasma.core 2.0 as PlasmaCore
 
 import "../common" as UICommon
 
-PlasmaCore.IconItem {
+Kirigami.Icon {
     roundToIconSize: false
     Layout.maximumWidth: 20
     Layout.maximumHeight: 20
