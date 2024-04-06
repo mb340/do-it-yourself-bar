@@ -230,7 +230,7 @@ Component {
                 }
             }
 
-            onClicked: {
+            onClicked: function(mouse) {
                 if (tooltipText) {
                     killTooltipTimer();
                     tooltip.visible = false;

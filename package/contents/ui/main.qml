@@ -41,10 +41,16 @@ PlasmoidItem {
         // dialog, so I use an additional config property and update it
         // with a value received from the C++ backend. This causes the config
         // dialog to read this property and show D-Bus service status.
-        onDbusSuccessChanged: config.DBusSuccess = dbusSuccess
+        function onDbusSuccessChanged(dbusSuccess) {
+            config.DBusSuccess = dbusSuccess
+        }
 
-        onInvalidDataFormatDetected: container.addErrorBlockButton()
+        function onInvalidDataFormatDetected() {
+            container.addErrorBlockButton()
+        }
 
-        onBlockInfoListSent: container.update(blockInfoList)
+        function onBlockInfoListSent (blockInfoList) {
+            container.update(blockInfoList)
+        }
     }
 }
