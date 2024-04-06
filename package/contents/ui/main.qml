@@ -1,26 +1,26 @@
-import QtQuick 2.7
-import QtQuick.Controls 1.4
-import QtQuick.Layouts 1.3
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
 
-import org.kde.kquickcontrolsaddons 2.0
-import org.kde.plasma.core 2.0 as PlasmaCore
-import org.kde.plasma.plasmoid 2.0
+import org.kde.kquickcontrolsaddons
+import org.kde.plasma.core as PlasmaCore
+import org.kde.plasma.plasmoid
 
 import org.kde.plasma.doityourselfbar 1.0
 
 import "applet"
 
 
-Item {
+PlasmoidItem {
     id: root
 
     BlockButtonTooltip { id: tooltip }
 
-    Plasmoid.fullRepresentation: Container {}
-    Plasmoid.preferredRepresentation: Plasmoid.fullRepresentation
+    fullRepresentation: Container {}
+    preferredRepresentation: root.fullRepresentation
 
     property QtObject config: plasmoid.configuration
-    property Item container: plasmoid.fullRepresentationItem
+    property Item container: root.fullRepresentationItem
 
     property bool isTopLocation: plasmoid.location == PlasmaCore.Types.TopEdge
     property bool isVerticalOrientation: plasmoid.formFactor == PlasmaCore.Types.Vertical
