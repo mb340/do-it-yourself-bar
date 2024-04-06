@@ -145,71 +145,43 @@ Item {
                 id: blockLabelsCustomFontCheckBox
                 checked: cfg_BlockLabelsCustomFont
                 onCheckedChanged: {
-                    if (checked) {
-                        var currentIndex = blockLabelsCustomFontComboBox.currentIndex;
-                        var selectedFont = blockLabelsCustomFontComboBox.model[currentIndex].value;
-                        cfg_BlockLabelsCustomFont = selectedFont;
-                    } else {
-                        cfg_BlockLabelsCustomFont = "";
+                    if (!checked) {
+                        cfg_BlockLabelsCustomFont = ""
+                        cfg_BlockLabelsCustomFontSize = 0
                     }
                 }
                 text: "Custom font:"
             }
 
-            ComboBox {
-                id: blockLabelsCustomFontComboBox
+            FontDialog {
+                id: fontDialog
+                visible: false
+            }
+
+            Button {
+                icon.name: 'configure'
                 enabled: blockLabelsCustomFontCheckBox.checked
-                implicitWidth: 130
 
-                Component.onCompleted: {
-                    var array = [];
-                    var fonts = Qt.fontFamilies()
-                    for (var i = 0; i < fonts.length; i++) {
-                        array.push({text: fonts[i], value: fonts[i]});
-                    }
-                    model = array;
-
-                    var foundIndex = find(cfg_BlockLabelsCustomFont);
-                    if (foundIndex == -1) {
-                        foundIndex = find(theme.defaultFont.family);
-                    }
-                    if (foundIndex >= 0) {
-                        currentIndex = foundIndex;
-                    }
+                onClicked: {
+                    fontDialog.selectedFont = Qt.font({
+                        family: cfg_BlockLabelsCustomFont,
+                        pointSize: cfg_BlockLabelsCustomFontSize
+                    })
+                    fontDialog.onAccepted.connect(onAccepted)
+                    fontDialog.visible = true
                 }
 
-                onCurrentIndexChanged: {
-                    if (enabled && currentIndex) {
-                        var selectedFont = model[currentIndex].value;
-                        cfg_BlockLabelsCustomFont = selectedFont;
-                    }
+                function onAccepted() {
+                    cfg_BlockLabelsCustomFont = fontDialog.selectedFont.family
+                    cfg_BlockLabelsCustomFontSize = fontDialog.selectedFont.pointSize
+                    fontDialog.visible = false
+                    fontDialog.onAccepted.disconnect(onAccepted)
                 }
             }
-        }
 
-        RowLayout {
-            spacing: 0
-
-            CheckBox {
-                id: blockLabelsCustomFontSizeCheckBox
-                checked: cfg_BlockLabelsCustomFontSize > 0
-                onCheckedChanged: cfg_BlockLabelsCustomFontSize = checked ?
-                                  blockLabelsCustomFontSizeSpinBox.value : 0
-                text: "Custom font size:"
-            }
-
-            SpinBox {
-                id: blockLabelsCustomFontSizeSpinBox
-                enabled: blockLabelsCustomFontSizeCheckBox.checked
-                value: cfg_BlockLabelsCustomFontSize || theme.defaultFont.pixelSize
-                minimumValue: 5
-                maximumValue: 100
-                suffix: " px"
-                onValueChanged: {
-                    if (blockLabelsCustomFontSizeCheckBox.checked) {
-                        cfg_BlockLabelsCustomFontSize = value;
-                    }
-                }
+            Label {
+                visible: cfg_BlockLabelsCustomFont
+                text: cfg_BlockLabelsCustomFont + " " + cfg_BlockLabelsCustomFontSize
             }
         }
 
