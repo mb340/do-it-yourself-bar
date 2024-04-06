@@ -4,11 +4,12 @@ import QtQuick.Dialogs
 import QtQuick.Layouts
 
 import org.kde.kirigami as Kirigami
+import org.kde.kcmutils as KCM
 import org.kde.plasma.core 2.0 as PlasmaCore
 
 import "../common" as UICommon
 
-Item {
+KCM.SimpleKCM {
     // Animations
     property alias cfg_AnimationsEnable: animationsEnableCheckBox.checked
 
@@ -34,26 +35,24 @@ Item {
     property string cfg_BlockIndicatorsCustomColorForStyleB
     property string cfg_BlockIndicatorsCustomColorForStyleC
 
-    GridLayout {
-        columns: 1
-
-        SectionHeader {
-            text: "Animations"
+    Kirigami.FormLayout {
+        Kirigami.Separator {
+            Kirigami.FormData.isSection: true
+            Kirigami.FormData.label: "Animations"
         }
 
         CheckBox {
             id: animationsEnableCheckBox
-            text: "Enable animations"
+            Kirigami.FormData.label: "Enable animations"
         }
 
-        SectionHeader {
-            text: "Block buttons"
+        Kirigami.Separator {
+            Kirigami.FormData.isSection: true
+            Kirigami.FormData.label: "Block buttons"
         }
 
         RowLayout {
-            Label {
-                text: "Vertical margins:"
-            }
+            Kirigami.FormData.label: "Vertical margins:"
 
             SuffixSpinBox {
                 id: blockButtonsVerticalMarginSpinBox
@@ -75,9 +74,7 @@ Item {
         }
 
         RowLayout {
-            Label {
-                text: "Horizontal margins:"
-            }
+            Kirigami.FormData.label: "Horizontal margins:"
 
             SuffixSpinBox {
                 id: blockButtonsHorizontalMarginSpinBox
@@ -95,9 +92,7 @@ Item {
         }
 
         RowLayout {
-            Label {
-                text: "Spacing between buttons:"
-            }
+            Kirigami.FormData.label: "Spacing between buttons:"
 
             SuffixSpinBox {
                 id: blockButtonsSpacingSpinBox
@@ -121,14 +116,13 @@ Item {
             }
         }
 
-        SectionHeader {
-            text: "Block labels"
+        Kirigami.Separator {
+            Kirigami.FormData.isSection: true
+            Kirigami.FormData.label: "Block labels"
         }
 
         RowLayout {
-            Label {
-                text: "Maximum length:"
-            }
+            Kirigami.FormData.label: "Maximum length:"
 
             SuffixSpinBox {
                 id: blockLabelsMaximumLengthSpinBox
@@ -139,6 +133,7 @@ Item {
         }
 
         RowLayout {
+            Kirigami.FormData.label: "Custom font:"
             spacing: 0
 
             CheckBox {
@@ -150,7 +145,6 @@ Item {
                         cfg_BlockLabelsCustomFontSize = 0
                     }
                 }
-                text: "Custom font:"
             }
 
             FontDialog {
@@ -186,6 +180,7 @@ Item {
         }
 
         RowLayout {
+            Kirigami.FormData.label: "Custom text color for style A:"
             spacing: 0
 
             CheckBox {
@@ -194,7 +189,6 @@ Item {
                 checked: cfg_BlockLabelsCustomColorForStyleA
                 onCheckedChanged: cfg_BlockLabelsCustomColorForStyleA = checked ?
                                   blockLabelsCustomColorForStyleAButton.color : ""
-                text: "Custom text color for style A:"
             }
 
             ColorButton {
@@ -221,6 +215,7 @@ Item {
         }
 
         RowLayout {
+            Kirigami.FormData.label: "Custom text color for style B:"
             spacing: 0
 
             CheckBox {
@@ -229,7 +224,6 @@ Item {
                 checked: cfg_BlockLabelsCustomColorForStyleB
                 onCheckedChanged: cfg_BlockLabelsCustomColorForStyleB = checked ?
                                   blockLabelsCustomColorForStyleBButton.color : ""
-                text: "Custom text color for style B:"
             }
 
             ColorButton {
@@ -256,6 +250,7 @@ Item {
         }
 
         RowLayout {
+            Kirigami.FormData.label: "Custom text color for style C:"
             spacing: 0
 
             CheckBox {
@@ -264,7 +259,6 @@ Item {
                 checked: cfg_BlockLabelsCustomColorForStyleC
                 onCheckedChanged: cfg_BlockLabelsCustomColorForStyleC = checked ?
                                   blockLabelsCustomColorForStyleCButton.color : ""
-                text: "Custom text color for style C:"
             }
 
             ColorButton {
@@ -290,14 +284,13 @@ Item {
             }
         }
 
-        SectionHeader {
-            text: "Block indicators"
+        Kirigami.Separator {
+            Kirigami.FormData.isSection: true
+            Kirigami.FormData.label: "Block indicators"
         }
 
         RowLayout {
-            Label {
-                text: "Style:"
-            }
+            Kirigami.FormData.label: "Style:"
 
             ComboBox {
                 id: blockIndicatorsStyleComboBox
@@ -337,12 +330,12 @@ Item {
         }
 
         RowLayout {
+            Kirigami.FormData.label: "Invert indicator's position"
             spacing: 0
 
             CheckBox {
                 id: blockIndicatorsInvertPositionCheckBox
                 enabled: cfg_BlockIndicatorsStyle < 2
-                text: "Invert indicator's position"
             }
 
             HintIcon {
@@ -352,12 +345,13 @@ Item {
         }
 
         RowLayout {
+            Kirigami.FormData.label: "Custom color for style A:"
+
             CheckBox {
                 id: indicatorsCustomColorForStyleACheckBox
                 checked: cfg_BlockIndicatorsCustomColorForStyleA
                 onCheckedChanged: cfg_BlockIndicatorsCustomColorForStyleA = checked ?
                                   indicatorsCustomColorForStyleAButton.color : ""
-                text: "Custom color for style A:"
             }
 
             ColorButton {
@@ -372,12 +366,13 @@ Item {
         }
 
         RowLayout {
+            Kirigami.FormData.label: "Custom color for style B:"
+
             CheckBox {
                 id: indicatorsCustomColorForStyleBCheckBox
                 checked: cfg_BlockIndicatorsCustomColorForStyleB
                 onCheckedChanged: cfg_BlockIndicatorsCustomColorForStyleB = checked ?
                                   indicatorsCustomColorForStyleBButton.color : ""
-                text: "Custom color for style B:"
             }
 
             ColorButton {
@@ -392,12 +387,13 @@ Item {
         }
 
         RowLayout {
+            Kirigami.FormData.label: "Custom color for style C:"
+
             CheckBox {
                 id: indicatorsCustomColorForStyleCCheckBox
                 checked: cfg_BlockIndicatorsCustomColorForStyleC
                 onCheckedChanged: cfg_BlockIndicatorsCustomColorForStyleC = checked ?
                                   indicatorsCustomColorForStyleCButton.color : ""
-                text: "Custom color for style C:"
             }
 
             ColorButton {

@@ -2,26 +2,27 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 
+import org.kde.kirigami as Kirigami
+import org.kde.kcmutils as KCM
+
 import "../common" as UICommon
 
-Item {
+KCM.SimpleKCM {
     // D-Bus service
     property alias cfg_DBusInstanceId: dbusInstanceIdSpinBox.value
 
     // Startup script
     property string cfg_StartupScriptPath
 
-    GridLayout {
-        columns: 1
+    Kirigami.FormLayout {
 
-        SectionHeader {
-            text: "D-Bus service"
+        Kirigami.Separator {
+            Kirigami.FormData.isSection: true
+            Kirigami.FormData.label: "D-Bus service"
         }
 
         RowLayout {
-            Label {
-                text: "Instance ID:"
-            }
+            Kirigami.FormData.label: "Instance ID:"
 
             SpinBox {
                 id: dbusInstanceIdSpinBox
@@ -36,9 +37,7 @@ Item {
         }
 
         RowLayout {
-            Label {
-                text: "D-Bus service status:"
-            }
+            Kirigami.FormData.label: "D-Bus service status:"
 
             Label {
                 text: plasmoid.configuration.DBusSuccess ? "OK" : "NOT OK"
@@ -57,11 +56,14 @@ Item {
             }
         }
 
-        SectionHeader {
-            text: "Startup script"
+        Kirigami.Separator {
+            Kirigami.FormData.isSection: true
+            Kirigami.FormData.label: "Startup script"
         }
 
         RowLayout {
+            Kirigami.FormData.label: "Run this script at startup:"
+
             spacing: 0
 
             CheckBox {
@@ -72,7 +74,6 @@ Item {
                         cfg_StartupScriptPath = "";
                     }
                 }
-                text: "Run this script at startup:"
             }
 
             UICommon.GrowingTextField {
