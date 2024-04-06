@@ -8,6 +8,9 @@ import org.kde.plasma.plasmoid 2.0
 
 import org.kde.plasma.doityourselfbar 1.0
 
+import "applet"
+
+
 Item {
     id: root
 

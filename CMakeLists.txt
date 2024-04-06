@@ -16,17 +16,17 @@ endif()
 if(NOT KDE_INSTALL_QMLDIR)
     file(STRINGS /etc/os-release distro REGEX "^NAME=.*$")
     if(distro MATCHES ".*Ubuntu.*")
-        set(KDE_INSTALL_QMLDIR "/usr/lib/x86_64-linux-gnu/qt5/qml")
+        set(KDE_INSTALL_QMLDIR "/usr/lib/x86_64-linux-gnu/qt6/qml")
     endif()
 
     file(STRINGS /etc/os-release distro REGEX "^NAME=.*$")
     if(distro MATCHES ".*openSUSE.*")
-        set(KDE_INSTALL_QMLDIR "/usr/lib64/qt5/qml")
+        set(KDE_INSTALL_QMLDIR "/usr/lib64/qt6/qml")
     endif()
 
     file(STRINGS /etc/os-release distro REGEX "^NAME=.*$")
     if(distro MATCHES ".*Arch|Manjaro|Solus.*")
-        set(KDE_INSTALL_QMLDIR "/usr/lib/qt/qml")
+        set(KDE_INSTALL_QMLDIR "/usr/lib/qt6/qml")
     endif()
 endif()
 
@@ -38,17 +38,19 @@ include(KDECompilerSettings)
 include(KDECMakeSettings)
 include(ECMInstallIcons)
 
-set(REQUIRED_QT_VERSION 5.9.5)
-set(KF5_MIN_VERSION 5.44.0)
+set(REQUIRED_QT_VERSION 6.6.0)
+set(KF6_MIN_VERSION 6.0.0)
 
-find_package(Qt5 ${REQUIRED_QT_VERSION}
+find_package(Qt6 ${REQUIRED_QT_VERSION}
              CONFIG REQUIRED
              Qml
              DBus)
 
-find_package(KF5 ${KF5_MIN_VERSION}
+find_package(KF6 ${KF6_MIN_VERSION}
              REQUIRED COMPONENTS
-             Plasma)
+             Config)
+
+find_package(Plasma REQUIRED)
 
 plasma_install_package(package org.kde.plasma.doityourselfbar)
 
@@ -62,11 +64,11 @@ set(doityourselfbar_SRCS
 add_library(doityourselfbar SHARED ${doityourselfbar_SRCS})
 
 target_link_libraries(doityourselfbar
-                      Qt5::Qml
-                      Qt5::DBus
-                      KF5::Plasma)
+                      Qt6::Qml
+                      Qt6::DBus
+                      Plasma::Plasma)
 
 install(TARGETS doityourselfbar DESTINATION ${KDE_INSTALL_QMLDIR}/org/kde/plasma/doityourselfbar)
 install(FILES plugin/qmldir DESTINATION ${KDE_INSTALL_QMLDIR}/org/kde/plasma/doityourselfbar)
 
-ecm_install_icons(ICONS icons/sc-apps-doityourselfbar.svg DESTINATION ${ICON_INSTALL_DIR})
+ecm_install_icons(ICONS icons/sc-apps-doityourselfbar.svg DESTINATION ${KDE_INSTALL_ICONDIR})
