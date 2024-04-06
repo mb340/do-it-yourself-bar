@@ -25,8 +25,8 @@ Item {
 
             SpinBox {
                 id: dbusInstanceIdSpinBox
-                minimumValue: 0
-                maximumValue: 999
+                from: 0
+                to: 999
             }
 
             HintIcon {

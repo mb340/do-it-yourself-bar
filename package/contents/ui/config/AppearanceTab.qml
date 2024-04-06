@@ -55,7 +55,7 @@ Item {
                 text: "Vertical margins:"
             }
 
-            SpinBox {
+            SuffixSpinBox {
                 id: blockButtonsVerticalMarginSpinBox
 
                 enabled: cfg_BlockIndicatorsStyle != 0 &&
@@ -63,9 +63,9 @@ Item {
                          cfg_BlockIndicatorsStyle != 5
 
                 value: cfg_BlockButtonsVerticalMargin
-                minimumValue: 0
-                maximumValue: 300
-                suffix: " px"
+                from: 0
+                to: 300
+                suffix: "px"
             }
 
             HintIcon {
@@ -79,13 +79,13 @@ Item {
                 text: "Horizontal margins:"
             }
 
-            SpinBox {
+            SuffixSpinBox {
                 id: blockButtonsHorizontalMarginSpinBox
                 enabled: cfg_BlockIndicatorsStyle != 5
                 value: cfg_BlockButtonsHorizontalMargin
-                minimumValue: 0
-                maximumValue: 300
-                suffix: " px"
+                from: 0
+                to: 300
+                suffix: "px"
             }
 
             HintIcon {
@@ -99,12 +99,12 @@ Item {
                 text: "Spacing between buttons:"
             }
 
-            SpinBox {
+            SuffixSpinBox {
                 id: blockButtonsSpacingSpinBox
                 value: cfg_BlockButtonsSpacing
-                minimumValue: 0
-                maximumValue: 100
-                suffix: " px"
+                from: 0
+                to: 100
+                suffix: "px"
             }
         }
 
@@ -130,11 +130,11 @@ Item {
                 text: "Maximum length:"
             }
 
-            SpinBox {
+            SuffixSpinBox {
                 id: blockLabelsMaximumLengthSpinBox
-                minimumValue: 3
-                maximumValue: 100
-                suffix: " chars"
+                from: 3
+                to: 100
+                suffix: "chars"
             }
         }
 
@@ -354,12 +354,12 @@ Item {
                 }
             }
 
-            SpinBox {
+            SuffixSpinBox {
                 id: blockIndicatorsStyleBlockRadiusSpinBox
                 visible: cfg_BlockIndicatorsStyle == 2
                 value: cfg_BlockIndicatorsStyleBlockRadius
-                minimumValue: 0
-                maximumValue: 300
+                from: 0
+                to: 300
                 suffix: " px corner radius"
             }
         }
