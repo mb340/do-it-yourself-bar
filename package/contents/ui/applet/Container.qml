@@ -15,7 +15,10 @@ GridLayout {
 
     property Item largestBlockButton
 
-    BlockButton { id: blockButtonComponent }
+    Component {
+        id: blockButtonComponent
+        BlockButton { }
+    }
 
     GridLayout {
         id: blockButtonContainer
