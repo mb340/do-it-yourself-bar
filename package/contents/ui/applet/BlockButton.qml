@@ -271,7 +271,7 @@ Rectangle {
                                    2 * config.BlockButtonsSpacing;
 
             if (config.BlockButtonsSetCommonSizeForAll &&
-                container.largestBlockButton &&
+                container && container.largestBlockButton &&
                 container.largestBlockButton != self &&
                 container.largestBlockButton.implicitWidth > newImplicitWidth) {
                 return container.largestBlockButton.implicitWidth;
