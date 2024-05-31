@@ -16,7 +16,12 @@ PlasmoidItem {
 
     BlockButtonTooltip { id: tooltip }
 
-    fullRepresentation: Container {}
+    fullRepresentation: Container {
+        Component.onCompleted: {
+            backend.cfg_DBusInstanceId = config.DBusInstanceId
+            backend.cfg_StartupScriptPath = config.StartupScriptPath
+        }
+    }
     preferredRepresentation: root.fullRepresentation
 
     property QtObject config: plasmoid.configuration
@@ -28,8 +33,6 @@ PlasmoidItem {
     DoItYourselfBar {
         id: backend
 
-        cfg_DBusInstanceId: config.DBusInstanceId
-        cfg_StartupScriptPath: config.StartupScriptPath
     }
 
     Connections {
