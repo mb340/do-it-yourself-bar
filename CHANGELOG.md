@@ -1,5 +1,10 @@
 # Changelog
 
+## 2.1
+
+* Fix applet not initializing on first run
+* Fix error on initialization with common size for all buttons config enabled
+
 ## 2.0
 
 * Port to Plasma 6.0
