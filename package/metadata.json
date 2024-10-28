@@ -10,7 +10,7 @@
         "Icon": "doityourselfbar",
         "Id": "org.kde.plasma.doityourselfbar",
         "Name": "Do It Yourself Bar",
-        "Version": "2.1"
+        "Version": "2.1.1"
     },
     "X-Plasma-API": "declarativeappletscript",
     "X-Plasma-API-Minimum-Version": "6.0"
