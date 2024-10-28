@@ -57,19 +57,10 @@ KCM.SimpleKCM {
             SuffixSpinBox {
                 id: blockButtonsVerticalMarginSpinBox
 
-                enabled: cfg_BlockIndicatorsStyle != 0 &&
-                         cfg_BlockIndicatorsStyle != 4 &&
-                         cfg_BlockIndicatorsStyle != 5
-
                 value: cfg_BlockButtonsVerticalMargin
                 from: 0
                 to: 300
                 suffix: "px"
-            }
-
-            HintIcon {
-                visible: !blockButtonsVerticalMarginSpinBox.enabled
-                tooltipText: "Not available for the selected indicator style"
             }
         }
 
@@ -78,16 +69,11 @@ KCM.SimpleKCM {
 
             SuffixSpinBox {
                 id: blockButtonsHorizontalMarginSpinBox
-                enabled: cfg_BlockIndicatorsStyle != 5
+
                 value: cfg_BlockButtonsHorizontalMargin
                 from: 0
                 to: 300
                 suffix: "px"
-            }
-
-            HintIcon {
-                visible: !blockButtonsHorizontalMarginSpinBox.enabled
-                tooltipText: "Not available for the selected indicator style"
             }
         }
 
