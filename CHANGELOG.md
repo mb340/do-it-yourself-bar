@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.1.1
+
+* Allow margin configuration for all block styles
+
 ## 2.1
 
 * Fix applet not initializing on first run
